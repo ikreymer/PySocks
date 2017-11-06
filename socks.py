@@ -604,7 +604,7 @@ class socksocket(_BaseSocket):
                 host = socket.inet_ntop(family, addr_bytes)
                 file.write(struct.pack(">H", port))
                 return host, port
-            except socket.error:
+            except (socket.error, OSError):
                 continue
 
         # Well it's not an IP number, so it's probably a DNS name.
